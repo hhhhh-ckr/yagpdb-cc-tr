@@ -24,9 +24,8 @@ Trigger|Trigger Türü|Code|Dependencies|Custom Command Settings
 ---|---|---|---|---
 Rol|Command|[İndir](rol.yag)|❌|Moderatör rollerinize izin verin
 
-## Önemli
+## Önemli ⁉
 
-| Kod içindeki rol ID'lerinini kendi rol ID'leriniz ile değiştirmelisiniz! |
+| 📢 Kod içindeki rol ID'lerinini kendi rol ID'leriniz ile değiştirmelisiniz! |
 | --- |
-| Üçten fazla rol kullanmak için kodu düzenlemeniz gerekir! |
-| --- |
+| ⚠ Üçten fazla rol kullanmak için kodu düzenlemeniz gerekir! |
