@@ -4,7 +4,7 @@
 
 Belirlenen rolleri kullanıcılara verip almaya yarar. Genellikle basit kayıt işlemleri için kullanılır.
 
-<img src="../../assets/Moderasyon/Rol/rol_kullanım.gif?raw=true" width="90%"/>
+<img src="../../assets/Moderasyon/Rol/rol_kullanım.gif?raw=true" width="60%"/>
 
 <p float="left">
 	<img src="../../assets/Moderasyon/Rol/rol_verme.png?raw=true" width="30%"/>
