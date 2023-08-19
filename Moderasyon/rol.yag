@@ -1,0 +1,94 @@
+{{/*
+	Kod sahibi: hhhhh-ckr
+	Trigger: rol
+	Trigger türü: Command
+	Örnek kullanım: rol ver erkek 391247103839436800
+	Not: Sadece kullanıcı ID ile çalışır, etiket ile çalışmaz.
+*/}}
+
+{{/*Botun sunucudaki prefixi*/}}
+{{$Prefix := slice ($prefix := reFind `:.*` (exec "prefix")) 3 (add (len $prefix) -1)}}
+
+{{/*Prefix ile birlikte, yazılan komutun uzunluğu*/}}
+{{$Uzunluk := (len .Args)}}
+
+{{/*Komutu kullananın avatar bağlantısı*/}}
+{{$AvatarURL := .User.AvatarURL "256"}}
+
+{{/*Mevcut eylemlerin listesi*/}}
+{{$EylemListesi := (cslice "ver" "al")}}
+
+{{/*Mevcut rollerin listesi*/}}
+{{$RolListesi := (cslice "üye" "kız" "erkek")}}
+
+{{/*Hata durumunda kodun doğru kullanımını gösterir*/}}
+{{$KodHatasıMesajı := "rol <eylem> <rol> <kullanıcıID>"}}
+
+{{/*Hata durumunda eylem listesini gösterir*/}}
+{{$EylemHatasıMesajı := (print "Eylem kısmı yalnızca `<" (joinStr ">, <" $EylemListesi.StringSlice) ">` değerlerinden biri olabilir!")}}
+
+{{/*Hata durumunda rol listesini gösterir*/}}
+{{$RolHatasıMesajı := (print "Rol kısmı yalnızca `<" (joinStr ">, <" $RolListesi.StringSlice) ">` değerlerinden biri olabilir!")}}
+
+{{/*
+////////// Ayarlanabilir değişkenler başlangıcı \\\\\\\\\\
+*/}}
+
+{{/*Mevcut rollerin ID değerleri*/}}
+{{$ÜyeRolID := 12345}}
+{{$KızRolID := 12345}}
+{{$ErkekRolID := 12345}}
+
+{{/*Mesajlar için emojiler*/}}
+{{$ÜyeEmoji := "👤"}}
+{{$KızEmoji := "♀️"}}
+{{$ErkekEmoji := "♂️"}}
+{{$BilgiEmoji := "ℹ️"}}
+{{$BaşarılıEmoji := "✅"}}
+{{$HataEmoji := "❌"}}
+
+{{/*
+\\\\\\\\\\ Ayarlanabilir değişkenler sonu //////////
+*/}}
+
+{{if eq $Uzunluk 4}}
+	{{if in $EylemListesi (index .Args 1)}}
+		{{$Eylem := (index .Args 1)}}
+		{{if in $RolListesi (index .Args 2)}}
+			{{$Rol := (index .Args 2)}}
+			{{$KullanıcıID := (index .Args 3)}}
+			{{if eq $Eylem "ver"}}
+				{{if eq $Rol "üye"}}
+					{{giveRoleID $KullanıcıID $ÜyeRolID}}
+					{{(print $ÜyeEmoji " - " (mentionRoleID $ÜyeRolID) " rolü " (userArg $KullanıcıID).Mention " kullanıcısına verildi! - " $BaşarılıEmoji)}}
+				{{else if eq $Rol "kız"}}
+					{{giveRoleID $KullanıcıID $KızRolID}}
+					{{(print $KızEmoji " - " (mentionRoleID $KızRolID) " rolü " (userArg $KullanıcıID).Mention " kullanıcısına verildi! - " $BaşarılıEmoji)}}
+				{{else if eq $Rol "erkek"}}
+					{{giveRoleID $KullanıcıID $ErkekRolID}}
+					{{(print $ErkekEmoji " - " (mentionRoleID $ErkekRolID) " rolü " (userArg $KullanıcıID).Mention " kullanıcısına verildi! - " $BaşarılıEmoji)}}
+				{{end}}
+			{{else if eq $Eylem "al"}}
+				{{if eq $Rol "üye"}}
+					{{takeRoleID $KullanıcıID $ÜyeRolID}}
+					{{(print $ÜyeEmoji " - " (mentionRoleID $ÜyeRolID) " rolü " (userArg $KullanıcıID).Mention " kullanıcısından alındı! - " $BaşarılıEmoji)}}
+				{{else if eq $Rol "kız"}}
+					{{takeRoleID $KullanıcıID $KızRolID}}
+					{{(print $KızEmoji " - " (mentionRoleID $KızRolID) " rolü " (userArg $KullanıcıID).Mention " kullanıcısından alındı! - " $BaşarılıEmoji)}}
+				{{else if eq $Rol "erkek"}}
+					{{takeRoleID $KullanıcıID $ErkekRolID}}
+					{{(print $ErkekEmoji " - " (mentionRoleID $ErkekRolID) " rolü " (userArg $KullanıcıID).Mention " kullanıcısından alındı! - " $BaşarılıEmoji)}}
+				{{end}}
+			{{end}}
+		{{else}}
+			{{/*Komutta kullanılan rol, listede mevcut değilse mevcut rol listesini gösterir*/}}
+			{{(print $BilgiEmoji " - Hey! " .User.Mention " " $RolHatasıMesajı " - " $HataEmoji)}}
+		{{end}}
+	{{else}}
+		{{/*Komutta kullanılan eylem, listede mevcut değilse mevcut eylem listesini gösterir*/}}
+        {{(print $BilgiEmoji " - Hey! " .User.Mention " " $EylemHatasıMesajı " - " $HataEmoji)}}
+	{{end}}
+{{else}}
+	{{/*Komut eksik yada yanlış kullanıldığında 5 saniye boyunca doğru kullanımını gösterir*/}}
+	{{(print $BilgiEmoji " - Hey! " .User.Mention " doğru kullanım: `" $Prefix $KodHatasıMesajı "` - " $HataEmoji)}}
+{{end}}
