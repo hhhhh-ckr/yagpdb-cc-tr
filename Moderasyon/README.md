@@ -32,7 +32,7 @@
 
 Trigger|Trigger Türü|Kod|Gereksinimler|Custom Command Ayarları
 |---|---|---|:---:|:---:|
-rol|Command|[rol_kayıt](rol_kayıt.yag)|❌|Moderatör rollerine izin verin
+rol|Command|[rol_kayıt](rol_kayıt.yag)|[rol ID](https://github.com/hhhhh-ckr/yagpdb-cc-tr/blob/main/Moderasyon/README.md#:~:text=kendi%20rollerinizin%20ID%27leri)|Moderatör rollerine izin verin
 
 > [!IMPORTANT]
 > Kodun içindeki rol ID'leri kendi rollerinizin ID'leri ile değiştirmelisiniz!
@@ -48,10 +48,8 @@ rol|Command|[rol_kayıt](rol_kayıt.yag)|❌|Moderatör rollerine izin verin
 
 <img src="../../assets/Moderasyon/Kanal_bilgi/bilgi_kullanım.gif?raw=true" width="60%"/>
 
-<p float="left">
-	<img src="../../assets/Moderasyon/Kanal_bilgi/bilgi_topic_preview.png?raw=true" width="30%"/>
-	<img src="../../assets/Moderasyon/Kanal_bilgi/bilgi_topic_editor.png?raw=true" width="30%"/>
-</p>
+<img src="../../assets/Moderasyon/Kanal_bilgi/bilgi_topic_preview.png?raw=true" width="60%"/>
+<img src="../../assets/Moderasyon/Kanal_bilgi/bilgi_topic_editor.png?raw=true" width="60%"/>
 
 > [!WARNING]
 > Başlık (topic) kısmında hiçbir şey yazmıyorsa uyarı verir!
@@ -72,5 +70,8 @@ rol|Command|[rol_kayıt](rol_kayıt.yag)|❌|Moderatör rollerine izin verin
 Trigger|Trigger Türü|Kod|Gereksinimler|Custom Command Ayarları
 |---|---|---|:---:|:---:|
 bilgi|Command|[kanal_bilgi](kanal_bilgi.yag)|❌|❌
+
+> [!NOTE]
+> Bilgilendirme ve uyarı mesajlarının silinme sürelerini kodun içinden değiştirebilirsiniz!
 
 ---

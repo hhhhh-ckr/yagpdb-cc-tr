@@ -9,6 +9,12 @@
 ////////// Ayarlanabilir değişkenler başlangıcı \\\\\\\\\\
 */}}
 
+{{/*Bilgilendirme silinme süresi*/}}
+{{$bilgiSüre := 5}}
+
+{{/*Uyarı silinme süresi*/}}
+{{$uyarıSüre := 3}}
+
 {{/*Embed içinde kullanılan bilgilendirme emojisi*/}}
 {{$footerEmoji := "https://cdn.discordapp.com/emojis/868470575742480405.webp?size=44&quality=lossless"}}
 
@@ -16,26 +22,29 @@
 \\\\\\\\\\ Ayarlanabilir değişkenler sonu //////////
 */}}
 
+{{/*Kanal başlığı olup olmadığı kontrolü*/}}
 {{if .Channel.Topic}}
+	{{/*Kanal başlığı varsa verilen bilgilendirme*/}}
 	{{$embed := cembed
-		"title" (joinStr "" "( " .Channel.Name " )" " kanalı hakkında bilgi !")
+		"title" (joinStr "" "( " .Channel.Name " )" " kanalı hakkında bilgi!")
 		"description" (joinStr "" .Channel.Topic)
 		"color" 3447003
-		"footer" (sdict "text" "Bilgilendirme 5 saniye sonra silinecektir !" "icon_url" $footerEmoji)
+		"footer" (sdict "text" (print "Bilgilendirme " $bilgiSüre " saniye sonra silinecektir!") "icon_url" $footerEmoji)
 	}}
 	{{deleteTrigger 0}}
 	{{$bilgi := sendMessageRetID nil $embed}}
-	{{sleep 5}}
+	{{sleep $bilgiSüre}}
 	{{deleteMessage nil $bilgi}}
 {{else}}
+	{{/*Kanal başlığı yoksa verilen uyarı*/}}
 	{{$embed := cembed
-	"title" (joinStr "" "( " .Channel.Name " )" " kanalı hakkında bilgi bulunamadı !")
-	"description" (print "Kanalın başlık (topic) kısmında hiçbir şey yazmıyor! " )
-	"color" 3447003
-	"footer" (sdict "text" "Bilgilendirme 3 saniye sonra silinecektir !" "icon_url" $footerEmoji)
+		"title" (joinStr "" "( " .Channel.Name " )" " kanalı hakkında bilgi bulunamadı!")
+		"description" (print "Kanalın başlık (topic) kısmında hiçbir şey yazmıyor! " )
+		"color" 3447003
+		"footer" (sdict "text" (print "Bilgilendirme " $uyarıSüre " saniye sonra silinecektir!") "icon_url" $footerEmoji)
 	}}
 	{{deleteTrigger 0}}
 	{{$bilgi := sendMessageRetID nil $embed}}
-	{{sleep 3}}
+	{{sleep $uyarıSüre}}
 	{{deleteMessage nil $bilgi}}
 {{end}}
