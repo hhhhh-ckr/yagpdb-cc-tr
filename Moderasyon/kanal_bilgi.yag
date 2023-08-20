@@ -1,0 +1,41 @@
+{{/*
+    Kod sahibi: hhhhh-ckr
+	Trigger: bilgi
+	Trigger türü: Command
+	Örnek kullanım: bilgi
+*/}}
+
+{{/*
+////////// Ayarlanabilir değişkenler başlangıcı \\\\\\\\\\
+*/}}
+
+{{/*Embed içinde kullanılan bilgilendirme emojisi*/}}
+{{$footerEmoji := "https://cdn.discordapp.com/emojis/868470575742480405.webp?size=44&quality=lossless"}}
+
+{{/*
+\\\\\\\\\\ Ayarlanabilir değişkenler sonu //////////
+*/}}
+
+{{if .Channel.Topic}}
+	{{$embed := cembed
+		"title" (joinStr "" "( " .Channel.Name " )" " kanalı hakkında bilgi !")
+		"description" (joinStr "" .Channel.Topic)
+		"color" 3447003
+		"footer" (sdict "text" "Bilgilendirme 5 saniye sonra silinecektir !" "icon_url" $footerEmoji)
+	}}
+	{{deleteTrigger 0}}
+	{{$bilgi := sendMessageRetID nil $embed}}
+	{{sleep 5}}
+	{{deleteMessage nil $bilgi}}
+{{else}}
+	{{$embed := cembed
+	"title" (joinStr "" "( " .Channel.Name " )" " kanalı hakkında bilgi bulunamadı !")
+	"description" (print "Kanalın başlık (topic) kısmında hiçbir şey yazmıyor! " )
+	"color" 3447003
+	"footer" (sdict "text" "Bilgilendirme 3 saniye sonra silinecektir !" "icon_url" $footerEmoji)
+	}}
+	{{deleteTrigger 0}}
+	{{$bilgi := sendMessageRetID nil $embed}}
+	{{sleep 3}}
+	{{deleteMessage nil $bilgi}}
+{{end}}
