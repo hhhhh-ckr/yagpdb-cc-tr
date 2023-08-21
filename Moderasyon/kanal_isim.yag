@@ -1,0 +1,8 @@
+{{/*
+	Kod sahibi: hhhhh-ckr
+	Trigger: kisim
+	Trigger Türü: Command
+*/}}
+
+{{editChannelName nil "Emoji〡kanal・ismi"}}
+{{deleteTrigger 0}}
