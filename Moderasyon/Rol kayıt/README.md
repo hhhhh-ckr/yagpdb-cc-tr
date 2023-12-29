@@ -5,14 +5,14 @@
 	Basit kayıt işlemleri için kullanılır.
 </p>
 
-<img src="../../assets/Moderasyon/Rol_kayıt/rol_kullanım.gif?raw=true" width="60%"/>
+<img src="../../../assets/Moderasyon/Rol_kayıt/rol_kullanım.gif?raw=true" width="60%"/>
 
 <p float="left">
-	<img src="../../assets/Moderasyon/Rol_kayıt/rol_verme.png?raw=true" width="30%"/>
-	<img src="../../assets/Moderasyon/Rol_kayıt/rol_alma.png?raw=true" width="30%"/>
+	<img src="../../../assets/Moderasyon/Rol_kayıt/rol_verme.png?raw=true" width="30%"/>
+	<img src="../../../assets/Moderasyon/Rol_kayıt/rol_alma.png?raw=true" width="30%"/>
 </p>
 
-<img src="../../assets/Moderasyon/Rol_kayıt/rol_hata.png?raw=true" width="60%"/>
+<img src="../../../assets/Moderasyon/Rol_kayıt/rol_hata.png?raw=true" width="60%"/>
 
 ## Kullanım Örnekleri
 

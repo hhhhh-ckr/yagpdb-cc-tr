@@ -6,11 +6,11 @@
 	Kanal isminde emoji, ayraç, özel karakter kullananlar için kolaylık olur.
 </p>
 
-<img src="../../assets/Moderasyon/Kanal_isim/kanal_isim_kullanım.gif?raw=true" width="60%"/>
+<img src="../../../assets/Moderasyon/Kanal_isim/kanal_isim_kullanım.gif?raw=true" width="60%"/>
 
 <p float="left">
-	<img src="../../assets/Moderasyon/Kanal_isim/kanal_isim_örnek.png?raw=true" width="40%"/>
-	<img src="../../assets/Moderasyon/Kanal_isim/kanal_isim_liste.png?raw=true" width="20%"/>
+	<img src="../../../assets/Moderasyon/Kanal_isim/kanal_isim_örnek.png?raw=true" width="40%"/>
+	<img src="../../../assets/Moderasyon/Kanal_isim/kanal_isim_liste.png?raw=true" width="20%"/>
 </p>
 
 ## Kullanım Örnekleri
